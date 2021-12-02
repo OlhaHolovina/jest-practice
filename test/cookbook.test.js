@@ -7,14 +7,19 @@ describe('Cookbook', () => {
 
       myCookbook.addRecipe('cookie', ['eggs', 'water', 'flour', 'sugar']);
 
-      expect(myCookbook.recipes).toEqual({cookie: ['eggs', 'water', 'flour', 'sugar']})
+      expect(myCookbook.recipes).toEqual({cookie: ['eggs', 'water', 'flour', 'sugar']});
     });
   });
 
   describe('Listing recipes', () => {
     test('should allow the recipes to be listed', () => {
+      const myCookbook = new Cookbook();
 
-    });
+      myCookbook.addRecipe('hotdog', ['meat', 'bread']);
+      const recipes = myCookbook.listRecipes();
+
+      expect(recipes).toEqual(['hotdog']);
+    })
   });
 
   describe('Retrieving a recipe', () => {
