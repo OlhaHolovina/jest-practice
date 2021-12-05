@@ -51,7 +51,12 @@ describe('CookbookCli integration', () => {
 
   describe('Incorrect command', () => {
     test('should return a warning message if there is no such command', () => {
+      const myCookBook = new Cookbook();
+      const myCookBookCli = new CookbookCli(myCookBook);
 
+      const message = myCookBookCli.run('calculate the price', 'hotdog', ['bread', 'meat']);
+
+      expect(message).toEqual('Whoops, the following command is unsupported: calculate the price.');
     });
   });
 });
