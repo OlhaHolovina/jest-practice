@@ -28,7 +28,13 @@ describe('CookbookCli', () => {
 
   describe('Retrieving a recipe', () => {
     test('should display the ingredients required to make the specified recipe', () => {
+      const myCookBook = new Cookbook();
+      const myCookBookCli = new CookbookCli(myCookBook);
 
+      myCookBookCli.add('hotdog', ['bread', 'meat']);
+      const message = myCookBookCli.get('hotdog');
+
+      expect(message).toEqual(`The ingredients for hotdog are: bread,meat`);
     });
   });
 
