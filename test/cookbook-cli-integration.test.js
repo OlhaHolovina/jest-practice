@@ -39,7 +39,13 @@ describe('CookbookCli integration', () => {
 
   describe('Deleting a recipe', () => {
     test('should accept the recipe name and remove the specific recipe form the Cookbook', () => {
+      const myCookBook = new Cookbook();
+      const myCookBookCli = new CookbookCli(myCookBook);
 
+      myCookBookCli.run('add', 'hotdog', ['bread', 'meat']);
+      myCookBookCli.run('remove', 'hotdog');
+
+      expect(myCookBookCli.cookbook.recipes).toEqual({});
     });
   });
 
