@@ -15,7 +15,13 @@ describe('CookbookCli integration', () => {
 
   describe('Listing recipes', () => {
     test('should allow the recipes to be listed', () => {
+      const myCookBook = new Cookbook();
+      const myCookBookCli = new CookbookCli(myCookBook);
 
+      myCookBookCli.run('add', 'hotdog', ['bread', 'meat']);
+      const message = myCookBookCli.run('list');
+
+      expect(message).toEqual('You have the following recipes: hotdog');
     });
   });
 
