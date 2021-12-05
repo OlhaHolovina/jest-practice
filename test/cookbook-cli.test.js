@@ -24,6 +24,15 @@ describe('CookbookCli', () => {
 
       expect(message).toEqual(`You have the following recipes: hotdog,pizza`);
     });
+
+    test('should display the warning message if there is no any recipie', () => {
+      const myCookBook = new Cookbook();
+      const myCookBookCli = new CookbookCli(myCookBook);
+
+      const message = myCookBookCli.list();
+
+      expect(message).toEqual(`There is no any recipe`);
+    });
   });
 
   describe('Retrieving a recipe', () => {

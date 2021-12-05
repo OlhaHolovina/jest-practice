@@ -14,7 +14,12 @@ class CookbookCli {
   }
 
   list() {
-    return `You have the following recipes: ${this.cookbook.listRecipes().join(',')}`;
+    const recipies = this.cookbook.listRecipes();
+    if (recipies.length === 0){
+      return 'There is no any recipe';
+    } else {
+      return `You have the following recipes: ${recipies.join(',')}`;
+    }
   }
 
   add(name, ingredients) {
