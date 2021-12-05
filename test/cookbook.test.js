@@ -24,7 +24,12 @@ describe('Cookbook', () => {
 
   describe('Retrieving a recipe', () => {
     test('should allow the ingredients for a recipe to be retrieved', () => {
+      const myCookbook = new Cookbook();
 
+      myCookbook.addRecipe('cookie', ['eggs', 'water', 'flour', 'sugar']);
+      const recipe = myCookbook.getRecipe('cookie');
+
+      expect(recipe).toEqual([ 'eggs', 'water', 'flour', 'sugar' ]);
     });
   });
 
