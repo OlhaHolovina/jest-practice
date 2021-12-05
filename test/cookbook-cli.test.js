@@ -12,14 +12,14 @@ describe('CookbookCli', () => {
       expect(message).toEqual(`Successfully added the following recipe: hotdog`);
     });
 
-    test('should return a warning message if recipe already exist', () => {
+    test('should return a warning message if recipe already exists', () => {
       const myCookBook = new Cookbook();
       const myCookBookCli = new CookbookCli(myCookBook);
 
       myCookBookCli.add('hotdog', ['bread', 'meat']);
       const message = myCookBookCli.add('hotdog', ['bread', 'meat']);
 
-      expect(message).toEqual(`Recipe with name: 'hotdog' already exist, try another name`);
+      expect(message).toEqual(`Recipe with name: 'hotdog' already exists, try another name`);
     });
   });
 
@@ -54,6 +54,15 @@ describe('CookbookCli', () => {
       const message = myCookBookCli.get('hotdog');
 
       expect(message).toEqual(`The ingredients for hotdog are: bread,meat`);
+    });
+
+    test('should display a warning message when the user attempts to retrieve a recipe that does not exist', () => {
+      const myCookBook = new Cookbook();
+      const myCookBookCli = new CookbookCli(myCookBook);
+
+      const message = myCookBookCli.get('hotdog');
+
+      expect(message).toEqual(`Unfortunately you don't have a recipe with a name: hotdog`);
     });
   });
 
