@@ -11,6 +11,16 @@ describe('CookbookCli', () => {
 
       expect(message).toEqual(`Successfully added the following recipe: hotdog`);
     });
+
+    test('should return a warning message if recipe already exist', () => {
+      const myCookBook = new Cookbook();
+      const myCookBookCli = new CookbookCli(myCookBook);
+
+      myCookBookCli.add('hotdog', ['bread', 'meat']);
+      const message = myCookBookCli.add('hotdog', ['bread', 'meat']);
+
+      expect(message).toEqual(`Recipe with name: 'hotdog' already exist, try another name`);
+    });
   });
 
   describe('Listing recipes', () => {
