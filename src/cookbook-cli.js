@@ -39,12 +39,16 @@ class CookbookCli {
     } else {
       return `The ingredients for ${name} are: ${this.cookbook.getRecipe(name)}`;
     }
-
   }
 
   remove(name) {
-    this.cookbook.removeRecipe(name);
-    return `Successfully removed the following recipe: ${name}`;
+    const recipe =  this.cookbook.getRecipe(name);
+    if (recipe === undefined){
+      return `Recipe with name '${name}' doesn't not exist`;
+    } else {
+      this.cookbook.removeRecipe(name);
+      return `Successfully removed the following recipe: ${name}`;
+    }
   }
 }
 

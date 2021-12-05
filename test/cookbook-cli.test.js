@@ -76,5 +76,14 @@ describe('CookbookCli', () => {
 
       expect(message).toEqual(`Successfully removed the following recipe: hotdog`);
     });
+
+    test('should display a warning message when the user attempts to delete a recipe that does not exist', () => {
+      const myCookBook = new Cookbook();
+      const myCookBookCli = new CookbookCli(myCookBook);
+
+      const message = myCookBookCli.remove('hotdog');
+
+      expect(message).toEqual(`Recipe with name 'hotdog' doesn't not exist`);
+    });
   });
 });
