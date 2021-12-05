@@ -2,14 +2,19 @@ const { Cookbook } = require('../src/cookbook');
 const { CookbookCli } = require('../src/cookbook-cli');
 
 describe('CookbookCli integration', () => {
-  describe('Listing recipes', () => {
-    test('should allow the recipes to be listed', () => {
+  describe('Adding recipes', () => {
+    test('should accept the recipe information and add it to the CookBook', () => {
+      const myCookBook = new Cookbook();
+      const myCookBookCli = new CookbookCli(myCookBook);
 
+      myCookBookCli.run('add', 'hotdog', ['bread', 'meat']);
+
+      expect(myCookBookCli.cookbook.recipes).toEqual({hotdog: ['bread', 'meat']});
     });
   });
 
-  describe('Adding recipes', () => {
-    test('should accept the recipe information and add it to the CookBook', () => {
+  describe('Listing recipes', () => {
+    test('should allow the recipes to be listed', () => {
 
     });
   });
